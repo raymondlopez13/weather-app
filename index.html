@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <h2 class="p-3 text-center">Weather Dashboard<i class="fa fa-cloud pl-1"></i></h2>
+    </header>
+    <div class="bg-light row">
+        <div id="search-column" class="col-md-3">
+            <h4>Search for a City:</h4>
+            <div id="search-bar">
+                <input type="text" id="input">
+                <button id="search-btn" class='btn btn-primary'><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="border">
+                <h3 id="city-name" class="p-2">City</h3>
+                <h3 id="date" class="p-2">Date</h3>
+                <div id="city-temp" class="p-2">Temperature: </div>
+                <div id="city-humidity" class="p-2">Humidity: </div>
+                <div id="city-wind-speed" class="p-2">Wind Speed: </div>
+                <div id="city-UV-index" class="p-2">UV index: </div>
+            </div>
+            <h4 class="pt-2">5 day forecast: </h4>
+            <div class="d-flex flex-row pt-2" id="weather-cards">
+                
+            </div>
+        </div>
+
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
