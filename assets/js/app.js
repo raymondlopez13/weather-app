@@ -12,9 +12,6 @@ var cityIcon = document.querySelector('#city-icon');
 searchBtn.addEventListener('click', function() {
     var city = inputVal.value;
     inputVal.value = '';
-    while(weatherCards.firstChild) {
-        weatherCards.firstChild.remove();
-    }
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=8a12ce2b06e066c3bd155bf0d0ac6c6e';
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
@@ -73,6 +70,9 @@ var displayApiData = function(temp, humidity, windSpeed, UVindex, date, icon) {
 };
 
 var displayDailyData = function(daily) {
+    while(weatherCards.firstChild) {
+        weatherCards.firstChild.remove();
+    }
     for (i=1; i < 6; i++) {
         var dailyTemp = daily[i].temp.day;
         var dailyHumidity = daily[i].humidity;
@@ -147,9 +147,6 @@ firstLoad();
 
 var existingVal = function(city) {
     console.log(city);
-    while(weatherCards.firstChild) {
-        weatherCards.firstChild.remove();
-    }
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=8a12ce2b06e066c3bd155bf0d0ac6c6e';
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
