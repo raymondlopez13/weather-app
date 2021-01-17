@@ -113,8 +113,9 @@ var saveCity = function(city) {
     if (cities == null) {
         cities = [];
     }
+    console.log(city.toLowerCase())
     for (i = 0; i < cities.length; i++) {
-        if (city === cities[i]) {
+        if (city.toLowerCase() === cities[i].toLowerCase()) {
             return;
         }
     }
@@ -127,13 +128,13 @@ var saveCity = function(city) {
     btn.setAttribute('value', city);
     btn.textContent = city;
     document.querySelector('#search-column').appendChild(btn);
-    console.log(btn);
 };
 
 var firstLoad = function() {
     var cities = JSON.parse(localStorage.getItem('cities'));
-    console.log(cities);
-    console.log(cities.length);
+    if (cities == null) {
+        return;
+    }
     for (var i = 0; i < cities.length; i++) {
         var btn = document.createElement('button');
         btn.setAttribute('class', 'btn w-100 p-2 m-1');
