@@ -65,6 +65,13 @@ var displayApiData = function(temp, humidity, windSpeed, UVindex, date, icon) {
     humidityVal.textContent = 'Humidity: ' + humidity + '%';
     windSpeedVal.textContent = 'Wind Speed: ' + windSpeed + ' mph';
     UVindexVal.textContent = 'UV index: ' + UVindex;
+    if (UVindex < 2) {
+        UVindexVal.setAttribute('class', 'bg-success text-light p-2');
+    } else if (UVindex < 6 && UVindex >= 2) {
+        UVindexVal.setAttribute('class', 'bg-warning text-light p-2');
+    } else if (UVindex >= 6) {
+        UVindexVal.setAttribute('class', 'bg-danger text-light p-2');
+    }
     var iconSrc = 'http://openweathermap.org/img/wn/'+icon+'@2x.png'
     cityIcon.setAttribute('src', iconSrc);
 };
@@ -113,7 +120,6 @@ var saveCity = function(city) {
     if (cities == null) {
         cities = [];
     }
-    console.log(city.toLowerCase())
     for (i = 0; i < cities.length; i++) {
         if (city.toLowerCase() === cities[i].toLowerCase()) {
             return;
@@ -147,7 +153,6 @@ var firstLoad = function() {
 firstLoad();
 
 var existingVal = function(city) {
-    console.log(city);
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=8a12ce2b06e066c3bd155bf0d0ac6c6e';
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
